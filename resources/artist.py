@@ -2,7 +2,6 @@ from flask_restful import Resource
 from models.artistModel import ArtistModel
 import bs4 as bs
 import urllib
-import datetime
 from methods import getImage
 
 class Artist(Resource):
