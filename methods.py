@@ -17,4 +17,4 @@ def getImage(artist):
         mydict[count] = u
         count += 1
 
-    return artist
+    return mydict

@@ -2,5 +2,5 @@ Flask
 Flask-RESTful
 bs4
 requests
-robobrowser-0.5.3
+robobrowser
 uwsgi
