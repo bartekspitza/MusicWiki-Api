@@ -1,5 +1,5 @@
 Flask
 Flask-RESTful
 bs4
-urllib
+requests
 uwsgi
