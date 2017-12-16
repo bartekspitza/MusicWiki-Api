@@ -11,4 +11,4 @@ def getImage(artist):
 
     result = re.search(r'http([^\'" >]+)jpg', html).group(0)
 
-    return html
+    return result
