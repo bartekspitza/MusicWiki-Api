@@ -16,6 +16,6 @@ def getImage(artist):
     for i in range(len(result)):
         if i == 10:
             break
-        mydict[i+1] = "http" + u + "jpg"
+        mydict[i+1] = "http" + result[i] + "jpg"
 
     return mydict
