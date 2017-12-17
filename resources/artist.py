@@ -2,7 +2,7 @@ from flask_restful import Resource
 from models.artistModel import ArtistModel
 import bs4 as bs
 import urllib
-from methods import getImage
+from methods import getImage, getDesc
 
 class Artist(Resource):
 
@@ -17,7 +17,7 @@ class Artist(Resource):
 
         soup = bs.BeautifulSoup(htmlBody, "html.parser")
         try:
-            self.desc = soup.p.text
+            self.desc = getDesc(soup)
             self.bornDate = soup.find("span", "bday").text
             self.imageURL = getImage(artist)
         except:
