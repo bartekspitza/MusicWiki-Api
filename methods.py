@@ -12,9 +12,10 @@ def getImage(artist):
     result = re.findall(r'http([^\'" >]+)jpg', html)
     mydict = {}
 
-    count = 1
-    for u in result:
-        mydict[count] = u
-        count += 1
+
+    for i in range(len(result)):
+        if i == 10:
+            break
+        mydict[i+1] = "http" + u + "jpg"
 
     return mydict
