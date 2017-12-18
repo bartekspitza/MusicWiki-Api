@@ -2,7 +2,7 @@ from flask_restful import Resource
 from models.artistModel import ArtistModel
 import bs4 as bs
 import urllib
-from methods import getImage, getDesc
+from methods import getImage, getDesc, getTopSongs
 
 class Artist(Resource):
 
@@ -20,9 +20,10 @@ class Artist(Resource):
             self.imageURL = getImage(artist)
             self.desc = getDesc(soup)
             self.bornDate = soup.find("span", "bday").text
+            self.topSongs = getTopSongs(artist)
         except:
             return 500
 
-        new_artist = ArtistModel(self.bornDate, self.desc, self.imageURL)
+        new_artist = ArtistModel(self.bornDate, self.desc, self.imageURL, self.topSongs)
 
         return new_artist.json(), 201

@@ -1,4 +1,6 @@
 from robobrowser import RoboBrowser
+import urllib.request
+from bs4 import BeautifulSoup as Soup
 import re
 
 def getImage(artist):
@@ -61,3 +63,18 @@ def getDesc(sauce):
                 frenzyMode = False
 
     return "".join(extract[0:stopIndex])
+
+def getTopSongs(artist):
+    modifiedArtistString = artist.replace("_", "-").lower()
+    modifiedArtistString = modifiedArtistString[0].upper() + modifiedArtistString[1::]
+
+    hdr = {'User-Agent':'Mozilla/5.0'}
+    url = "https://genius.com/artists/" + modifiedArtistString
+
+    req = urllib.request.Request(url, headers=hdr)
+    html = urllib.request.urlopen(req)
+    soup = Soup(html, "html.parser")
+
+    extract = [x.text for x in soup.findAll("div", "mini_card-title")[0:5]]
+
+    return extract
