@@ -1,7 +1,7 @@
 class ArtistModel():
-    def __init__(self, imageURL, desc, topSongs):
-        self.imageURL = imageURL
+    def __init__(self, desc, imageURL, topSongs):
         self.desc = desc
+        self.imageURL = imageURL
         self.topSongs = topSongs
 
     def json(self):
