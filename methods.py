@@ -24,7 +24,7 @@ def getImage(artist):
 
 def getDesc(artist):
     htmlBody = urllib.request.urlopen("https://en.wikipedia.org/wiki/ " + artist)
-    soup = bs.BeautifulSoup(htmlBody, "html.parser")
+    soup = Soup(htmlBody, "html.parser")
 
     extract = [x for x in str(soup.find("p").text)]
 
