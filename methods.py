@@ -22,9 +22,11 @@ def getImage(artist):
 
     return myList
 
-def getDesc(sauce):
+def getDesc(artist):
+    htmlBody = urllib.request.urlopen("https://en.wikipedia.org/wiki/ " + artist)
+    soup = bs.BeautifulSoup(htmlBody, "html.parser")
 
-    extract = [x for x in str(sauce.find("p").text)]
+    extract = [x for x in str(soup.find("p").text)]
 
     count = 0
     count1 = 0
@@ -62,7 +64,7 @@ def getDesc(sauce):
                 count1 = 0
                 frenzyMode = False
 
-    return "".join(extract[0:stopIndex])
+    return ["".join(extract[0:stopIndex]), soup.find("span", "bday").text]
 
 def getTopSongs(artist):
     modifiedArtistString = artist.replace("_", "-").lower()
