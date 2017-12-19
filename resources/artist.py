@@ -10,7 +10,7 @@ class Artist(Resource):
         newArtist = ""
 
         try:
-            newArtist = ArtistModel(*getArtist())
+            newArtist = ArtistModel(*getArtist(artist))
         except:
             return 500
 
