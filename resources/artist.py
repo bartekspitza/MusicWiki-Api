@@ -10,8 +10,9 @@ class Artist(Resource):
         newArtist = ""
 
         try:
+            urls = getImage(artist)
             fromWiki = getDesc(artist)
-            newArtist = ArtistModel(getImage(artist), fromWiki[0], fromWiki[1], getTopSongs(artist))
+            newArtist = ArtistModel(urls, fromWiki[0], fromWiki[1], getTopSongs(artist))
         except:
             return 500
 
