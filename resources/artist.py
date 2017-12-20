@@ -2,7 +2,7 @@ from flask_restful import Resource
 from models.artistModel import ArtistModel
 import bs4 as bs
 import urllib
-from methods import getArtist
+import methods
 
 class Artist(Resource):
 
@@ -10,7 +10,7 @@ class Artist(Resource):
         newArtist = ""
 
         try:
-            newArtist = ArtistModel(*getArtist(artist))
+            newArtist = ArtistModel(*methods.getArtist(artist))
         except:
             return 500
 
