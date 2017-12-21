@@ -10,9 +10,12 @@ def makeUrl(artist):
 def getSoupHTML(query):
     header = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"}
     req = Request(query, headers=header)
-    html = urlopen(req)
 
-    return Soup(html, "html.parser")
+    try:
+        html = urlopen(req)
+        return Soup(html, "html.parser")
+    except:
+        return None
 
 def imageFromGenius(page):
     divWithImage = page.find("div", "user_avatar")
@@ -81,19 +84,27 @@ def getTopSongsFromGenius(page):
     return topSongs
 
 
+def artistNameFromGenius(page):
+    name = page.find("h1").text.strip()
+
+    return name
 
 def getArtist(artist):
     url = makeUrl(artist)
     soup = getSoupHTML(url)
 
-    imageURL = imageFromGenius(soup)
-    topSongs = getTopSongsFromGenius(soup)
-    descriptionParagraphs = descFromGenius(soup)
+    if soup:
+        name = artistNameFromGenius(soup)
+        imageURL = imageFromGenius(soup)
+        topSongs = getTopSongsFromGenius(soup)
+        descriptionParagraphs = descFromGenius(soup)
 
-    if descriptionParagraphs == None:
-        descriptionParagraphs = [descFromWiki(artist)]
+        if descriptionParagraphs == None:
+            descriptionParagraphs = [descFromWiki(artist)]
 
-    return [descriptionParagraphs, imageURL, topSongs]
+        return [name, descriptionParagraphs, imageURL, topSongs]
+
+    return {"Message": "Not found"}
 
 # def getArtist(artist):
 #     modifiedArtistString = artist.replace("_", "-").lower()
