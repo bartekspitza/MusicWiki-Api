@@ -77,7 +77,7 @@ def getTopSongsFromGenius(page):
         topSongs.append([section.find("div", "mini_card-title").text.strip()])
         topSongs[i].append(section.find("div", "mini_card-subtitle").text.strip())
         topSongs[i].append(re.search(r'http([^\'" >]+)', str(section.find("div", "mini_card-thumbnail"))).group(0))
-        topSongs[i].append(re.search(r'http([^\'" >]+)lyrics', str(section.find("a", "mini_card"))).group(0))
+        topSongs[i].append(re.search(r'http([^\'" >]+)', str(section.find("a", "mini_card"))).group(0))
     return topSongs
 
 
