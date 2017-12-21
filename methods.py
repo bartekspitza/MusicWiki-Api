@@ -112,6 +112,16 @@ def getArtist(artist):
 
     return {"Message": "Not found"}
 
+def getLyricsFromGenius(url):
+    soup = getSoupHTML(url)
+    extract = soup.find("div", "lyrics")
+
+    result = [x.text for x in extract.findAll("p")]
+    result = result[0].split("\n\n")
+    result = [x.split("\n") for x in result]
+
+    return result
+
 # def getArtist(artist):
 #     modifiedArtistString = artist.replace("_", "-").lower()
 #     modifiedArtistString = modifiedArtistString[0].upper() + modifiedArtistString[1::]

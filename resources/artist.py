@@ -1,7 +1,5 @@
 from flask_restful import Resource
 from models.artistModel import ArtistModel
-import bs4 as bs
-import urllib
 import methods
 
 class Artist(Resource):
