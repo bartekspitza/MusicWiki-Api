@@ -12,6 +12,6 @@ class Artist(Resource):
         try:
             newArtist = ArtistModel(*methods.getArtist(artist))
         except:
-            return 500
+            return {"message": "Our Fault"}, 500
 
         return newArtist.json(), 201
