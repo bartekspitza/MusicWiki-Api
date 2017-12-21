@@ -68,7 +68,7 @@ def descFromWiki(artist):
     return "".join(extract[0:stopIndex])
 
 def getTopSongsFromGenius(page):
-    topSongsGrid = page.findAll("div", "mini_card_grid-song")[0:5]
+    topSongsGrid = page.findAll("div", "mini_card_grid-song")
     topSongs = []
 
     for i in range(len(topSongsGrid)):
