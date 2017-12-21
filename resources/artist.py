@@ -14,4 +14,4 @@ class Artist(Resource):
         except:
             return {"message": "Our Fault"}, 500
 
-        return newArtist.json(), 201
+        return newArtist.json(), 200
