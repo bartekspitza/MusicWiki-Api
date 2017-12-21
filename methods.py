@@ -85,9 +85,15 @@ def getTopSongsFromGenius(page):
 
 
 def artistNameFromGenius(page):
-    name = page.find("h1").text.strip()
+    name = [x for x in page.find("h1").text]
+    cleanName = ""
+    for char in name:
+        if char == "\n":
+            break
+        cleanName += char
+    print(cleanName)
 
-    return name
+    return cleanName
 
 def getArtist(artist):
     url = makeUrl(artist)

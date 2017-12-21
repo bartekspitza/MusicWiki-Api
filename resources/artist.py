@@ -7,16 +7,16 @@ import methods
 class Artist(Resource):
 
     def get(self, artist):
-        newArtist = ""
         result = ""
 
         try:
-            results = methods.getArtist(artist)
+            result = methods.getArtist(artist)
         except:
             return {"message": "Our Fault"}, 500
 
         if result == {"Message": "Not found"}:
             return {"message": "Not found"}, 400
 
+        print(result)
         newArtist = ArtistModel(*result)
         return newArtist.json(), 200
