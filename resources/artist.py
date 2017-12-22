@@ -1,11 +1,12 @@
 from flask_restful import Resource
 from models.artistModel import ArtistModel
 import methods
-
+from app import totalRequestCount
 class Artist(Resource):
 
     def get(self, artist):
         result = ""
+        totalRequestCount += 1
 
         try:
             result = methods.getArtist(artist)
