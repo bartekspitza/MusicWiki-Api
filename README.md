@@ -1,3 +1,3 @@
-## Simple RESTful API built for MusicWiki app
+## Simple API built with Flask
 
-Built with [Flask 💙](https://github.com/pallets/flask "Flask repo")
+This is a simple API built for **MusicWiki**
